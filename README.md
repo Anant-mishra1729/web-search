@@ -1,7 +1,7 @@
 # web-search plugin
+**This is a standalone plugin for zsh with no need of installing Oh-my-zsh**
 
 The code of plugin belongs to ohmyzsh, I have copied the code from the functions.zsh and web-search.plugin.zsh to make this plugin work without any need of installing Oh-my-zsh!
-This plugin adds aliases for searching with Google, Wiki, Bing, YouTube and other popular services.
 
 Open your `~/.zshrc` file and add this line `source <PATH OF PLUGIN.ZSH FILE>
 
@@ -11,6 +11,8 @@ source ~/.config/zsh/web-search/web-search.plugin.zsh
 ```
 
 ## Usage
+This plugin adds aliases for searching with Google, Wiki, Bing, YouTube and other popular services.
+
 
 You can use the `web-search` plugin in these two forms:
 
