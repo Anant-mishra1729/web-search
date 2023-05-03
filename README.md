@@ -3,7 +3,7 @@
 
 The code of plugin belongs to ohmyzsh, I have copied the code from the functions.zsh and web-search.plugin.zsh to make this plugin work without any need of installing Oh-my-zsh!
 
-Open your `~/.zshrc` file and add this line `source <PATH OF PLUGIN.ZSH FILE>
+Open your `~/.zshrc` file and add this line `source < Path where web-search.plugin.zsh is installed >`
 
 For example
 ```zsh
