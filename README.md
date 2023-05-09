@@ -83,3 +83,14 @@ ZSH_WEB_SEARCH_ENGINES=(reddit "https://www.reddit.com/search/?q=")
 
 These custom search engines will also be turned to aliases, so you can
 both do `web_search reddit <query>` or `reddit <query>`.
+
+## Troubleshooting
+If you're getting this error
+```
+iconv: failed to start conversion processing
+Error converting string from  to UTF-8
+```
+Try these solutions 
+* Replace this line `local encoding=$langinfo[CODESET]` with `local encoding=$(locale charmap)`
+* Replace this line `str=$(echo -E "$str" | iconv -f $encoding -t UTF-8)` with `str=$(echo -E "$str" | iconv -f US-ASCII -t UTF-8)
+* Raise an isssue with the error.
