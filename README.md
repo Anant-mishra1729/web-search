@@ -18,7 +18,7 @@ Error converting string from  to UTF-8
 ```
 Try these solutions 
 * Replace this line `local encoding=$langinfo[CODESET]` with `local encoding=$(locale charmap)`
-* Replace this line `str=$(echo -E "$str" | iconv -f $encoding -t UTF-8)` with `str=$(echo -E "$str" | iconv -f US-ASCII -t UTF-8)
+* Replace this line `str=$(echo -E "$str" | iconv -f $encoding -t UTF-8)` with `str=$(echo -E "$str" | iconv -f US-ASCII -t UTF-8)`
 * Raise an isssue with the error.
 
 
