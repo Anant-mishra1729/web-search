@@ -8,18 +8,6 @@ For example
 source ~/.config/zsh/web-search/web-search.plugin.zsh
 ```
 
-## Troubleshooting
-If you're getting this error
-```
-iconv: failed to start conversion processing
-Error converting string from  to UTF-8
-```
-Try these solutions 
-* Replace this line `local encoding=$langinfo[CODESET]` with `local encoding=$(locale charmap)`
-
-* Raise an isssue with the error.
-
-
 ## Usage
 This plugin adds aliases for searching with Google, Wiki, Bing, YouTube and other popular services.
 
