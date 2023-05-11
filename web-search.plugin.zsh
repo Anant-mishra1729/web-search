@@ -172,7 +172,10 @@ alias map='web_search duckduckgo \!m'
 alias image='web_search duckduckgo \!i'
 alias ducky='web_search duckduckgo \!'
 
-# other search engine aliases
+# Include this in your .zshrc to define aliases for all search engines
+# explort ZSH_WEB_SEARCH_ENGINES=(
+#     reddit "https://www.reddit.com/search/?q="
+# )
 if [[ ${#ZSH_WEB_SEARCH_ENGINES} -gt 0 ]]; then
   typeset -A engines
   engines=($ZSH_WEB_SEARCH_ENGINES)
