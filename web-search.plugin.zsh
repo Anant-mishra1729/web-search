@@ -1,33 +1,20 @@
-# Plugin rights belong to ohmyzsh
-# I have just copied the plugin from ohmyzsh and some functions to make it work
-
-# web_search from terminal
+# Plugin for zsh that allows you to search the web from the command line.
 
 # URL-encode a string
-#
-# Encodes a string using RFC 2396 URL-encoding (%-escaped).
-# See: https://www.ietf.org/rfc/rfc2396.txt
-#
-# By default, reserved characters and unreserved "mark" characters are
-# not escaped by this function. This allows the common usage of passing
-# an entire URL in, and encoding just special characters in it, with
-# the expectation that reserved and mark characters are used appropriately.
-# The -r and -m options turn on escaping of the reserved and mark characters,
-# respectively, which allows arbitrary strings to be fully escaped for
-# embedding inside URLs, where reserved characters might be misinterpreted.
-#
+
 # Prints the encoded string on stdout.
 # Returns nonzero if encoding failed.
 #
 # Usage:
-#  omz_urlencode [-r] [-m] [-P] <string> [<string> ...]
+#  urlencode [-r] [-m] [-P] <string> [<string> ...]
 #
 #    -r causes reserved characters (;/?:@&=+$,) to be escaped
 #
 #    -m causes "mark" characters (_.!~*''()-) to be escaped
 #
 #    -P causes spaces to be encoded as '%20' instead of '+'
-function omz_urlencode() {
+
+function urlencode() {
   emulate -L zsh
   local -a opts
   zparseopts -D -E -a opts r m P
@@ -39,7 +26,7 @@ function omz_urlencode() {
   local str="$in_str"
 
   # URLs must use UTF-8 encoding; convert str to UTF-8 if required
-  local encoding=$langinfo[CODESET]
+  local encoding=$(locale charmap)
   local safe_encodings
   safe_encodings=(UTF-8 utf8 US-ASCII)
   if [[ -z ${safe_encodings[(r)$encoding]} ]]; then
@@ -84,7 +71,7 @@ function omz_urlencode() {
   echo -E "$url_str"
 }
 
-
+# Open a URL in the default browser
 function open_command() {
   local open_cmd
 
@@ -102,8 +89,6 @@ function open_command() {
               ;;
   esac
 
-  # If a URL is passed, $BROWSER might be set to a local browser within SSH.
-  # See https://github.com/ohmyzsh/ohmyzsh/issues/11098
   if [[ -n "$BROWSER" && "$1" = (http|https)://* ]]; then
     "$BROWSER" "$@"
     return
@@ -116,7 +101,6 @@ function open_command() {
 function web_search() {
   emulate -L zsh
 
-  # define search engine URLS
   typeset -A urls
   urls=(
     $ZSH_WEB_SEARCH_ENGINES
@@ -150,7 +134,7 @@ function web_search() {
   if [[ $# -gt 1 ]]; then
     # build search url:
     # join arguments passed with '+', then append to search engine URL
-    url="${urls[$1]}$(omz_urlencode ${@[2,-1]})"
+    url="${urls[$1]}$(urlencode ${@[2,-1]})"
   else
     # build main page url:
     # split by '/', then rejoin protocol (1) and domain (2) parts with '//'

@@ -1,8 +1,6 @@
 # web-search plugin
 **This is a standalone plugin for zsh with no need of installing Oh-my-zsh**
 
-The code of plugin belongs to ohmyzsh, I have copied the code from the functions.zsh and web-search.plugin.zsh to make this plugin work without any need of installing Oh-my-zsh!
-
 Open your `~/.zshrc` file and add this line `source < Path where web-search.plugin.zsh file is located >`
 
 For example
@@ -18,7 +16,7 @@ Error converting string from  to UTF-8
 ```
 Try these solutions 
 * Replace this line `local encoding=$langinfo[CODESET]` with `local encoding=$(locale charmap)`
-* Replace this line `str=$(echo -E "$str" | iconv -f $encoding -t UTF-8)` with `str=$(echo -E "$str" | iconv -f US-ASCII -t UTF-8)`
+
 * Raise an isssue with the error.
 
 
