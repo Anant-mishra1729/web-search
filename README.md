@@ -8,6 +8,18 @@ For example
 source ~/.config/zsh/web-search/web-search.plugin.zsh
 ```
 
+## Troubleshooting
+If you're getting this error
+```
+iconv: failed to start conversion processing
+Error converting string from  to UTF-8
+```
+Try these solutions 
+* Replace this line `local encoding=$langinfo[CODESET]` with `local encoding=$(locale charmap)`
+
+* Raise an isssue with the error.
+
+
 ## Usage
 This plugin adds aliases for searching with Google, Wiki, Bing, YouTube and other popular services.
 
@@ -60,15 +72,14 @@ Also there are aliases for bang-searching DuckDuckGo:
 
 ### Custom search engines
 
-If you want to add other search contexts to the plugin, you can use the
-`$ZSH_WEB_SEARCH_ENGINES` variable. Set it before Oh My Zsh is sourced,
-with the following format:
+If you want to add other search engines add this to your `.zshrc`:
 
 ```zsh
-ZSH_WEB_SEARCH_ENGINES=(
+export ZSH_WEB_SEARCH_ENGINES=(
     <context> <URL>
     <context> <URL>
-)
+    ...
+    )
 ```
 
 where `<context>` is the name of the search context, and `<URL>` a URL of
@@ -76,7 +87,9 @@ the same type as the search contexts above. For example, to add `reddit`,
 you'd do:
 
 ```zsh
-ZSH_WEB_SEARCH_ENGINES=(reddit "https://www.reddit.com/search/?q=")
+export ZSH_WEB_SEARCH_ENGINES=(
+    reddit "https://www.reddit.com/search?q="
+    )
 ```
 
 These custom search engines will also be turned to aliases, so you can
