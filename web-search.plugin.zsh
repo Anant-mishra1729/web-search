@@ -122,6 +122,7 @@ function web_search() {
     archive         "https://web.archive.org/web/*/"
     scholar         "https://scholar.google.com/scholar?q="
     ask             "https://www.ask.com/web?q="
+    translate       "https://translate.google.com/?sl=auto&tl=hi&text="
   )
 
   # check whether the search engine is supported
@@ -163,6 +164,7 @@ alias wa='web_search wolframalpha'
 alias archive='web_search archive'
 alias scholar='web_search scholar'
 alias ask='web_search ask'
+alias translate='web_search translate'
 
 #add your own !bang searches here
 alias wiki='web_search duckduckgo \!w'
